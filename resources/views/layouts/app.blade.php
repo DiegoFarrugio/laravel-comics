@@ -1,3 +1,76 @@
+@php 
+
+$card = [
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+    [
+        'titleFoto' => 'resources/img/adv.jpg',
+        'titleCard' => 'Action Comics',
+    ],
+];
+
+$comic = [
+    [
+        'cardFoto' => 'resources/img/buy-comics-digital-comics.png',
+        'cardTitle' => 'DIGITAL COMICS',
+    ],
+    [
+        'cardFoto' => 'resources/img/buy-comics-merchandise.png',
+        'cardTitle' => 'DS MERCHANDISE',
+    ],
+    [
+        'cardFoto' => 'resources/img/buy-comics-subscriptions.png',
+        'cardTitle' => 'SUBSCRIPTION',
+    ],
+    [
+        'cardFoto' => 'resources/img/buy-comics-shop-locator.png',
+        'cardTitle' => 'COMIC SHOP LOCATOR',
+    ],
+    [
+        'cardFoto' => 'resources/img/buy-dc-power-visa.svg',
+        'cardTitle' => 'DC POWER VISA',
+    ],
+];
+
+// var_dump($configArrayDC);
+@endphp
+
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -20,27 +93,42 @@
         @include('partials.header')
 
         <main>
-            <div class="container">
+            <section id="main-section-1">
+            </section>
 
-                <div class="row">
 
-                    <div class="col">
-
-                        <div>
-                            <img class="gatto-img" src="{{ Vite::asset('resources/img/adv.jpg') }}" alt="Gatto">
-                        </div>
-
-                        <div class="gatto-bg">
-                            QUESTO DIV AVRA' COME SFONDO IL GATTO
-                        </div>
-
-                        @yield('main-content')
-
-                    </div>
-
+            <section id="main-section-2">
+                <div class="setting-card-section-2">
+                    @foreach($configArrayDC as $item)
+                <div class="card me-2 mt-5 " style="width: 18rem;">
+                    <img src="{{$item['thumb']}}" class="card-img-top" alt="">
+                <div class="card-body mt-4 ">
+                    <h5 class="card-title ">{{$item['title']}} </h5>
                 </div>
+                </div> 
+                @endforeach
+                </div> 
 
-            </div>
+                <div class="text-center mt-4 mb-3">
+                    <button type="button" class="btn btn-primary">LOAD MORE</button>
+                </div>
+            </section>
+
+
+            <section id="main-section-3">
+                @foreach($comic as $comics)
+                    <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                            <img class="width-image-section-3" src="{{Vite::asset($comics['cardFoto'])}}" alt="">
+                                <div class="margine">
+                                {{$comics['cardTitle']}}
+                                </div>
+                        </div>
+                    </div>
+                    @endforeach
+            </section>
+
+
         </main>
 
         @include('partials.footer')
